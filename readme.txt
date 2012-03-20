@@ -6,18 +6,14 @@
  What is it?
  ===========
 
- This is your project! It's a barebones, deployable Maven 2 project to help you
- get your foot in the door developing with Java EE 6. Specifically, this
- project is setup to allow you to create a JSF 2.0 and CDI 1.0 application that
- can run on Servlet Containers like Tomcat 6 and Jetty 6. You may be satisfied
- with this combination in the long run, or you may eventually migrate to a true
- Java EE 6 environment to leverage EJB 3.1, JPA 2.0 and other platform
- technologies.
+ Eyequery is intended to be a graphical database query authoring tool, allowing
+ non-technical business-users to query useful information without the help from
+ developers.
 
  System requirements
  ===================
 
- All you need to run this project is Java 5.0 (Java SDK 1.5) or greator and
+ All you need to run this project is Java 5.0 (Java SDK 1.5) or greater and
  Maven 2.0.10 or greater. This application is setup to be run on a Servlet
  Container. The embedded Jetty and Tomcat containers get downloaded
  automatically by the Maven commands.

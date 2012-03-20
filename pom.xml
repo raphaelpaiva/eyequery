@@ -7,8 +7,10 @@
    <version>1.0-SNAPSHOT</version>
    <packaging>war</packaging>
 
-   <name>JSF and CDI webapp project</name>
-   <description>A starter JSF and CDI webapp project that targets Servlet containers, generated from the jboss-jsf-weld-servlet-webapp archetype</description>
+   <name>Eyequery</name>
+   <description>Eyequery is intended to be a graphical database query authoring tool, allowing
+ non-technical business-users to query useful information without the help from
+ developers.</description>
 
    <properties>
       <version.weld-servlet>1.1.0.Final</version.weld-servlet>
