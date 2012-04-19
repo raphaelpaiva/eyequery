@@ -5,7 +5,7 @@ import javax.enterprise.inject.Model;
 
 public @Model
 class Query {
-	private String query = "select e from Entity e";
+	private String query = "";
 
 	@PostConstruct
 	public void initialize() {
