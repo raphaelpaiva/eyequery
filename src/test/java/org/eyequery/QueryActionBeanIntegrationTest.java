@@ -2,6 +2,7 @@ package org.eyequery;
 
 import java.util.List;
 
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
 
@@ -22,6 +23,12 @@ public class QueryActionBeanIntegrationTest
 	private EntityManager entityManager = null;
 	
 	private static Fruit[] FRUITS = {new Fruit("banana"), new Fruit("apple"), new Fruit("mango")};
+	
+	@Inject
+	private QueryActionBean queryActionbean;
+	
+	@Inject
+	private Query query;
 	
 	@Deployment
 	public static WebArchive createDeployment()
@@ -53,7 +60,10 @@ public class QueryActionBeanIntegrationTest
 	public void testRun_SelectAllFruits()
 	{
 		populateFruits();
-		List<Fruit> fruitsFromDatabase = getEntityManager().createQuery("select f from Fruit f order by f.id").getResultList();
+		
+		query.setQuery("select f from Fruit f order by f.id");
+		
+		List<Fruit> fruitsFromDatabase = (List<Fruit>) queryActionbean.run();
 		
 		Assert.assertEquals(3, fruitsFromDatabase.size());
 		
