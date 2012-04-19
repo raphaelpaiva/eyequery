@@ -5,6 +5,8 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
 
+import junit.framework.Assert;
+
 import org.eyequery.testEntities.Fruit;
 import org.jboss.arquillian.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
@@ -30,17 +32,35 @@ public class QueryActionBeanIntegrationTest
 				.addWebResource(EmptyAsset.INSTANCE, "beans.xml");
 	}
 	
-	public static EntityManager createEntityManager()
+	public EntityManager createEntityManager()
 	{
 		return Persistence.createEntityManagerFactory("eyeQueryPU").createEntityManager();
+	}
+	
+	public void populateFruits()
+	{
+		getEntityManager().getTransaction().begin();
+		for (int i = 0; i < FRUITS.length; i++)
+		{
+			getEntityManager().persist(FRUITS[i]);
+			System.out.println("Persisted " + FRUITS[i]);
+		}
+		getEntityManager().getTransaction().commit();
 	}
 	
 	@Test
 	@SuppressWarnings("unchecked")
 	public void testRun_SelectAllFruits()
 	{
+		populateFruits();
 		List<Fruit> fruitsFromDatabase = getEntityManager().createQuery("select f from Fruit f order by f.id").getResultList();
 		
+		Assert.assertEquals(3, fruitsFromDatabase.size());
+		
+		for(int i = 0; i < FRUITS.length; i++)
+		{
+			Assert.assertEquals(FRUITS[i], fruitsFromDatabase.get(i));
+		}
 	}
 	
 	public EntityManager getEntityManager()
