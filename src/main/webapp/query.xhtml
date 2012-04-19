@@ -7,6 +7,7 @@
    <ui:define name="content">
    	<h:form prependId="false">
      <h:inputTextarea id="query-input" value="#{query.query}" rows="20" cols="80" />
+     <h:commandButton action="#{queryAction.run}" value="run" />
     </h:form>
    </ui:define>
 </ui:composition>
