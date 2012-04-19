@@ -1,0 +1,5 @@
+<dataset>
+  <Fruit id="1" name="banana" />
+  <Fruit id="2" name="apple" />
+  <Fruit id="3" name="mango" />
+</dataset>
