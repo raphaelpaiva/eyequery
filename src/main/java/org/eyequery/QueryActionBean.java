@@ -1,5 +1,6 @@
 package org.eyequery;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
@@ -15,15 +16,24 @@ public class QueryActionBean {
 	@Inject
 	private Query query;
 	
+	private List<?> resultList = new ArrayList<Object>();
+	
 	public QueryActionBean() {}
 	
-	public List<?> run() {
+	public void run() {
 		
 		EntityManagerFactory emf =Persistence.createEntityManagerFactory("eyeQueryPU");
 		EntityManager em = emf.createEntityManager();
 		
-		
-		return em.createQuery(query.getQuery()).getResultList();
+		resultList = em.createQuery(query.getQuery()).getResultList();
+	}
+
+	public List<?> getResultList() {
+		return resultList;
+	}
+
+	public void setResultList(List<?> resultList) {
+		this.resultList = resultList;
 	}
 	
 }
