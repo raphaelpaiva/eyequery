@@ -9,7 +9,7 @@ import javax.persistence.Persistence;
 import junit.framework.Assert;
 
 import org.eyequery.testEntities.Fruit;
-import org.jboss.arquillian.api.Deployment;
+import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.asset.EmptyAsset;
@@ -35,8 +35,9 @@ public class QueryActionBeanIntegrationTest
 	{
 		return ShrinkWrap.create(WebArchive.class, "eyequery-test.war")
 				.addPackage(QueryActionBean.class.getPackage())
-				.addManifestResource("persistence-test.xml", "persistence.xml")
-				.addWebResource(EmptyAsset.INSTANCE, "beans.xml");
+				.addAsManifestResource("test-persistence.xml", "persistence.xml")
+				.addAsWebInfResource("test-web.xml", "web.xml")
+				.addAsWebResource(EmptyAsset.INSTANCE, "beans.xml");
 	}
 	
 	public EntityManager createEntityManager()
@@ -63,7 +64,9 @@ public class QueryActionBeanIntegrationTest
 		
 		query.setQuery("select f from Fruit f order by f.id");
 		
-		List<Fruit> fruitsFromDatabase = (List<Fruit>) queryActionbean.run();
+		queryActionbean.run();
+		
+		List<Fruit> fruitsFromDatabase = (List<Fruit>) queryActionbean.getResultList();
 		
 		Assert.assertEquals(3, fruitsFromDatabase.size());
 		
