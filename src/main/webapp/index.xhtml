@@ -9,7 +9,11 @@
    	<h:form prependId="false">
      <h:inputTextarea id="query-input" value="#{query.query}" rows="20" cols="80" />
      <h:commandButton action="#{queryAction.run}" value="run" />
-     </p:panel>
     </h:form>
+    <p:dataTable id="result" value="#{queryAction.resultList}" var="obj" rendered="#{not empty queryAction.resultList}">
+      <p:column>
+        <h:outputText value="#{obj}" />
+      </p:column>
+    </p:dataTable>
    </ui:define>
 </ui:composition>
