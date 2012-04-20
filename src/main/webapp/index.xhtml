@@ -3,11 +3,13 @@
    xmlns:ui="http://java.sun.com/jsf/facelets"
    xmlns:f="http://java.sun.com/jsf/core"
    xmlns:h="http://java.sun.com/jsf/html"
+   xmlns:p="http://primefaces.org/ui"
    template="/WEB-INF/templates/eyequery.xhtml">
    <ui:define name="content">
    	<h:form prependId="false">
      <h:inputTextarea id="query-input" value="#{query.query}" rows="20" cols="80" />
      <h:commandButton action="#{queryAction.run}" value="run" />
+     </p:panel>
     </h:form>
    </ui:define>
 </ui:composition>
