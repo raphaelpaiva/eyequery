@@ -15,6 +15,7 @@
    <properties>
       <version.weld-servlet>1.1.0.Final</version.weld-servlet>
       <version.arquillian>1.0.0.Final</version.arquillian>
+      <version.arquillian.persistence>1.0.0.Alpha4</version.arquillian.persistence>
       <version.mojarra>2.0.3</version.mojarra>
       <version.myfaces>2.0.3</version.myfaces>
 
@@ -180,6 +181,13 @@
          <groupId>org.jboss.arquillian.junit</groupId>
          <artifactId>arquillian-junit-container</artifactId>
          <scope>test</scope>
+      </dependency>
+      
+      <dependency>
+			  <groupId>org.jboss.arquillian.extension</groupId>
+			  <artifactId>arquillian-persistence-impl</artifactId>
+			  <version>${version.arquillian.persistence}</version>
+			  <scope>test</scope>
       </dependency>
       
       <!-- Prime Faces -->
