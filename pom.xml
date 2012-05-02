@@ -91,6 +91,25 @@
          <version>2.5</version>
          <scope>provided</scope>
       </dependency>
+      
+      <!-- Persistence -->
+      <dependency>
+         <groupId>org.hibernate</groupId>
+         <artifactId>hibernate-entitymanager</artifactId>
+         <version>4.0.0.Final</version>
+     </dependency>
+     
+     <dependency>
+         <groupId>org.hibernate.javax.persistence</groupId>
+         <artifactId>hibernate-jpa-2.0-api</artifactId>
+         <version>1.0.1.Final</version>
+     </dependency>
+      
+      <dependency>
+	      <groupId>org.hibernate.java-persistence</groupId>
+	      <artifactId>jpa-api</artifactId>
+        <version>2.0-cr-1</version>
+      </dependency>
 
       <!--
       <dependency>
@@ -172,6 +191,15 @@
                -->
                <url>http://localhost:9090/manager</url>
             </configuration>
+            
+            <dependencies>
+            	<dependency>
+					<groupId>hsqldb</groupId>
+					<artifactId>hsqldb</artifactId>
+					<version>1.8.0.7</version>
+				</dependency>
+            </dependencies>
+            
          </plugin>
       </plugins>
    </build>
